@@ -8,6 +8,7 @@
             grid-template-columns: repeat(4, 100px);
             grid-template-rows: repeat(4, 100px);
             gap: 10px;
+            justify-content: center; /* Center the grid horizontally */
         }
 
         .tile {
@@ -16,11 +17,22 @@
             background-color: #333;
             border: 1px solid #666;
             cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            user-select: none;
         }
 
         .revealed {
             background-image: url('Designer (53) (1).jpeg'); /* Replace with your image */
             background-size: cover;
+            color: transparent; /* Hide text when revealed */
+        }
+
+        .tile:hover {
+            background-color: #444; /* Slightly lighter on hover */
         }
     </style>
 </head>
@@ -28,10 +40,10 @@
     <div id="puzzle-grid"></div>
     <script>
         const grid = document.getElementById('puzzle-grid');
-        const characters = ['B', 'L', 'A', 'C', 'K', 'W', 'I', 'D', 'O', 'W', '8', '8', '0', '8'];
+        const characters = ['B', 'L', 'A', 'C', 'K', 'W', 'I', 'D', 'O', 'W', '8', '8', '0', '8', '', '']; // Two empty strings for 16 tiles
 
         function createPuzzle() {
-            characters.sort(() => Math.random() - 0.5);
+            characters.sort(() => Math.random() - 0.5); // Shuffle characters
 
             for (let i = 0; i < characters.length; i++) {
                 const tile = document.createElement('div');
@@ -46,60 +58,8 @@
         function flipTile() {
             if (!this.classList.contains('revealed')) {
                 this.classList.add('revealed');
-            }
-        }
-
-        createPuzzle();
-    </script>
-</body>
-</html><!DOCTYPE html>
-<html>
-<head>
-    <title>Black Widow 8808 Puzzle</title>
-    <style>
-        #puzzle-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 100px);
-            grid-template-rows: repeat(4, 100px);
-            gap: 10px;
-        }
-
-        .tile {
-            width: 100px;
-            height: 100px;
-            background-color: #333;
-            border: 1px solid #666;
-            cursor: pointer;
-        }
-
-        .revealed {
-            background-image: url('black-widow-image.jpg'); /* Replace with your image */
-            background-size: cover;
-        }
-    </style>
-</head>
-<body>
-    <div id="puzzle-grid"></div>
-    <script>
-        const grid = document.getElementById('puzzle-grid');
-        const characters = ['B', 'L', 'A', 'C', 'K', 'W', 'I', 'D', 'O', 'W', '8', '8', '0', '8'];
-
-        function createPuzzle() {
-            characters.sort(() => Math.random() - 0.5);
-
-            for (let i = 0; i < characters.length; i++) {
-                const tile = document.createElement('div');
-                tile.classList.add('tile');
-                tile.textContent = characters[i];
-                tile.setAttribute('data-character', characters[i]);
-                tile.addEventListener('click', flipTile);
-                grid.appendChild(tile);
-            }
-        }
-
-        function flipTile() {
-            if (!this.classList.contains('revealed')) {
-                this.classList.add('revealed');
+            } else {
+                this.classList.remove('revealed'); // Toggle reveal state
             }
         }
 
