@@ -19,7 +19,7 @@
         }
 
         .revealed {
-            background-image: url('black-widow-image.jpg'); /* Replace with your image */
+            background-image: url('Designer (53) (1).jpeg'); /* Replace with your image */
             background-size: cover;
         }
     </style>
