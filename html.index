@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Black Widow 8808 Puzzle</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="puzzle-grid"></div>
+    <script src="script.js"></script>
+</body>
+</html>
